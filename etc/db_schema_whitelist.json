@@ -1,0 +1,36 @@
+{
+    "boxplosive_customer": {
+        "column": {
+            "entity_id": true,
+            "customer_id": true,
+            "updated_at": true
+        },
+        "index": {
+            "BOXPLOSIVE_CUSTOMER_CUSTOMER_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "BOXPLOSIVE_CUSTOMER_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID": true
+        }
+    },
+    "boxplosive_discount": {
+        "column": {
+            "entity_id": true,
+            "quote_id": true,
+            "discount": true
+        },
+        "index": {
+            "BOXPLOSIVE_DISCOUNT_QUOTE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "BOXPLOSIVE_DISCOUNT_QUOTE_ID_QUOTE_ENTITY_ID": true
+        }
+    },
+    "quote": {
+        "column": {
+            "boxplosive_subscribe": true,
+            "boxplosive_discount": true
+        }
+    }
+}

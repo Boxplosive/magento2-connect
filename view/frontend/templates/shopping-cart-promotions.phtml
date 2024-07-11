@@ -1,0 +1,84 @@
+<?php
+/**
+ * Copyright © Magmodules Ltd. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+ use Magento\Framework\Escaper;
+ use Boxplosive\Connect\Block\Cart\Promotions;
+
+ /** @var Promotions $block */
+ /** @var Escaper $escaper */
+?>
+
+<?php if ($block->isEnabled()): ?>
+    <!-- ko scope: 'boxplosive-promotions' -->
+        <section class="boxplosive-promotions-box"
+                 data-element="promotions-box"
+                 style="display: none;"
+                 data-bind="visible: isShow">
+
+            <div data-bind="html: resultText"></div>
+
+            <?php if ($block->displayPromotions()): ?>
+                <span data-element="boxplosive-show-modal" class="show-modal">
+                    <?= $escaper->escapeHtml(__('Show Promotions Saving Goals & Rewards')) ?>
+                </span>
+
+                <div data-element="boxplosive-modal" class="promotions-box-modal" style="display: none;">
+                    <h2 class="title">
+                        <?= $escaper->escapeHtml(__('Your Promotions Saving Goals & Rewards')); ?>
+                    </h2>
+
+                    <?php if (!empty($promotions = $block->getPromotions())): ?>
+                        <form class="promotions-list"
+                              action="<?= /* @noEscape */ $block->getFormUrl(); ?>"
+                              method="post">
+                            <?php foreach ($promotions as $index => $promotion): ?>
+                                <div>
+                                    <input  type="checkbox"
+                                            id="checkbox-promotion-<?= /* @noEscape */ $index; ?>"
+                                            name="<?= /* @noEscape */$promotion['status'] . $index; ?>"
+                                            value="<?= /* @noEscape */ $promotion['value'] ?>"
+                                            <?= $promotion['status'] == 'claimed' ? 'checked disabled' : '' ?> />
+
+                                    <label for="checkbox-promotion-<?= /* @noEscape */ $index; ?>">
+                                        <b><?= /* @noEscape */ $promotion['label'] ?></b>
+                                    </label>
+                                </div>
+                            <?php endforeach; ?>
+
+                            <button class="action primary" type="submit">
+                                <?= $escaper->escapeHtml(__('Apply Discount')) ?>
+                            </button>
+                        </form>
+                    <?php else: ?>
+                        <div class="message info">
+                            <span><?= $escaper->escapeHtml(__('No available promotions saving')); ?></span>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+        </section>
+
+        <div class="boxplosive-promotions-loader" data-bind="visible: !hideLoader"></div>
+    <!-- /ko -->
+    <script type="text/x-magento-init">
+        {
+            "[data-element='promotions-box']": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "boxplosive-promotions": {
+                            "component": "Boxplosive_Connect/js/promotions",
+                            "config": {
+                                "nonLoyaltyText": <?= /* @noEscape */ json_encode($block->getCartNonLoyaltyText()); ?>,
+                                "loyaltyText": <?= /* @noEscape */ json_encode($block->getCartLoyaltyText()); ?>,
+                                "displayPromotions": <?= /* @noEscape */ json_encode($block->displayPromotions()); ?>
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+<?php endif; ?>

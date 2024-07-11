@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <boxplosive_connect>
+            <general>
+                <version>v1.0.0</version>
+                <enable>0</enable>
+                <debug>0</debug>
+            </general>
+            <api>
+                <mode>acceptance</mode>
+                <acceptance_api_url>https://platform-api-uat.boxplosive.net</acceptance_api_url>
+                <production_api_url>https://platform-api.boxplosive.net</production_api_url>
+                <acceptance_b2c_tenant_name>boxplosiveb2cuat</acceptance_b2c_tenant_name>
+                <production_b2c_tenant_name>boxplosiveb2c</production_b2c_tenant_name>
+                <acceptance_b2c_tenant_id>91159cec-7ef3-4938-bbd5-5e51eccf9be1</acceptance_b2c_tenant_id>
+                <production_b2c_tenant_id>3851c86e-d98a-4f52-a821-0f6e276b7a33</production_b2c_tenant_id>
+            </api>
+            <textual>
+                <opt_in_text>Allow to set up a Boxplosive account for me so I can begin accumulating points and enjoying discounts!</opt_in_text>
+                <opt_out_text>Please remove my account from Boxplosive.</opt_out_text>
+                <cart_non_loyalty_text>Your could earn &lt;b&gt;{{points}} points&lt;/b&gt; on this purchase.</cart_non_loyalty_text>
+                <cart_loyalty_text>You earn &lt;b&gt;{{points}} points&lt;/b&gt; on this purchase.</cart_loyalty_text>
+                <checkout_non_loyalty_text>Your could earn &lt;b&gt;{{points}} points&lt;/b&gt; on this purchase.</checkout_non_loyalty_text>
+                <checkout_loyalty_text>You earn &lt;b&gt;{{points}} points&lt;/b&gt; on this purchase.</checkout_loyalty_text>
+            </textual>
+            <settings>
+                <finish_transaction>order</finish_transaction>
+                <use_multiple_discount>1</use_multiple_discount>
+            </settings>
+        </boxplosive_connect>
+    </default>
+</config>

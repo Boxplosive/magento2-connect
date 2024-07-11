@@ -1,0 +1,11 @@
+
+<!-- ko if: boxplosiveTotals().length -->
+    <!-- ko foreach: boxplosiveTotals() -->
+        <tr class="totals boxplosive_discount excl">
+            <th class="mark" colspan="1" scope="row" data-bind="text: title"></th>
+            <td class="amount">
+                <span class="price" data-bind="text: $parent.formatPrice(value)"></span>
+            </td>
+        </tr>
+    <!-- /ko -->
+<!-- /ko -->

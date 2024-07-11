@@ -1,0 +1,29 @@
+//
+//  Imports
+//  ---------------------------------------------
+
+@import './variables/_colors.less';
+@import './module/ui/_button.less';
+@import './module/ui/_modal.less';
+
+@import './module/_header.less';
+@import './module/_version.less';
+@import './module/_debug.less';
+
+
+//
+//  Common styles
+//  ---------------------------------------------
+
+.admin__page-nav._collapsed.boxplosive .title,
+.admin__page-nav._collapsed._show.boxplosive .title  {
+    background-image: url('@{baseDir}Boxplosive_Connect/images/logo.png') !important;
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    text-indent: 50px;
+    background-size: auto 70%;
+}
+
+#row_boxplosive_connect_debug_error_button .value {
+    padding-top: 8px;
+}

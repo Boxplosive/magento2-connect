@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="cart.summary">
+            <block class="Boxplosive\Connect\Block\Cart\Promotions" name="boxplosive.promotions.box"
+                   template="Boxplosive_Connect::shopping-cart-promotions.phtml" after="checkout.cart.methods.bottom" />
+        </referenceContainer>
+        <referenceBlock name="checkout.cart.totals">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="block-totals" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="boxplosive_discount" xsi:type="array">
+                                    <item name="component" xsi:type="string">Boxplosive_Connect/js/discount</item>
+                                    <item name="template" xsi:type="string">Boxplosive_Connect/discount</item>
+                                    <item name="sortOrder" xsi:type="string">20</item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

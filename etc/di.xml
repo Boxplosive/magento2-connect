@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Boxplosive\Connect\Api\Config\RepositoryInterface"
+                type="Boxplosive\Connect\Model\Config\Repository"/>
+    <preference for="Boxplosive\Connect\Api\Log\RepositoryInterface"
+                type="Boxplosive\Connect\Model\Log\Repository"/>
+    <preference for="Boxplosive\Connect\Api\Selftest\RepositoryInterface"
+                type="Boxplosive\Connect\Model\Selftest\Repository"/>
+
+    <preference for="Boxplosive\Connect\Api\WebApi\BackOffice\RepositoryInterface"
+                type="Boxplosive\Connect\Model\WebApi\BackOffice\Repository"/>
+    <preference for="Boxplosive\Connect\Api\WebApi\PointOfSale\RepositoryInterface"
+                type="Boxplosive\Connect\Model\WebApi\PointOfSale\Repository"/>
+    <preference for="Boxplosive\Connect\Api\WebApi\Distribution\RepositoryInterface"
+                type="Boxplosive\Connect\Model\WebApi\Distribution\Repository"/>
+    <preference for="Boxplosive\Connect\Api\WebApi\Internal\RepositoryInterface"
+                type="Boxplosive\Connect\Model\WebApi\Internal\Repository"/>
+
+    <preference for="Boxplosive\Connect\Api\Customer\DataInterface"
+                type="Boxplosive\Connect\Model\Customer\Data"/>
+    <preference for="Boxplosive\Connect\Api\Customer\RepositoryInterface"
+                type="Boxplosive\Connect\Model\Customer\Repository"/>
+
+    <preference for="Boxplosive\Connect\Api\Discount\DataInterface"
+                type="Boxplosive\Connect\Model\Discount\Data"/>
+    <preference for="Boxplosive\Connect\Api\Discount\RepositoryInterface"
+                type="Boxplosive\Connect\Model\Discount\Repository"/>
+
+    <type name="Boxplosive\Connect\Logger\ErrorLogger">
+        <arguments>
+            <argument name="name" xsi:type="string">BoxplosiveError</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Boxplosive\Connect\Logger\Handler\Error</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Boxplosive\Connect\Logger\DebugLogger">
+        <arguments>
+            <argument name="name" xsi:type="string">BoxplosiveDebug</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Boxplosive\Connect\Logger\Handler\Debug</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Boxplosive\Connect\Model\Selftest\Repository">
+        <arguments>
+            <argument name="testList" xsi:type="array">
+                <item name="phpVersion" xsi:type="object">Boxplosive\Connect\Service\Test\PhpVersion</item>
+                <item name="cron" xsi:type="object">Boxplosive\Connect\Service\Test\Cron</item>
+                <item name="extensionStatus" xsi:type="object">Boxplosive\Connect\Service\Test\ExtensionStatus</item>
+                <item name="phpExtensions" xsi:type="object">Boxplosive\Connect\Service\Test\PhpExtensions</item>
+                <item name="magentoVersion" xsi:type="object">Boxplosive\Connect\Service\Test\MagentoVersion</item>
+                <item name="extensionVersion" xsi:type="object">Boxplosive\Connect\Service\Test\ExtensionVersion</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Boxplosive\Connect\Console\Command\Selftest">
+        <arguments>
+            <argument name="selftestRepository" xsi:type="object">Boxplosive\Connect\Model\Selftest\Repository\Proxy</argument>
+        </arguments>
+    </type>
+
+    <!-- Command line block start -->
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="BoxplosiveSelftest" xsi:type="object">Boxplosive\Connect\Console\Command\Selftest</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Command line block end -->
+
+    <type name="Magento\Customer\Api\AccountManagementInterface">
+        <plugin name="after_customer_registration" type="Boxplosive\Connect\Plugin\Customer\AfterRegistrationPlugin" sortOrder="10" disabled="false"/>
+    </type>
+    <type name="Magento\Sales\Model\Order\Invoice">
+        <plugin name="after_invoice_register" type="Boxplosive\Connect\Plugin\Sales\AfterInvoiceRegisterPlugin" sortOrder="10" disabled="false"/>
+    </type>
+    <type name="Magento\Quote\Model\QuoteManagement">
+        <plugin name="after_place_order" type="Boxplosive\Connect\Plugin\Quote\AfterPlaceOrderPlugin" sortOrder="1" />
+    </type>
+    <type name="Magento\Checkout\Controller\Cart\CouponPost">
+        <plugin name="before_coupon_post" type="Boxplosive\Connect\Plugin\Checkout\BeforeCouponPostPlugin" sortOrder="1" />
+    </type>
+</config>

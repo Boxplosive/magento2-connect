@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="textual" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Textual Defaults</label>
+        <field id="optin_text" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Opt-in Checkbox text</label>
+            <config_path>boxplosive_connect/textual/opt_in_text</config_path>
+        </field>
+        <field id="optout_text" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Opt-out Checkbox text</label>
+            <config_path>boxplosive_connect/textual/opt_out_text</config_path>
+        </field>
+        <field id="cart_non_loyalty_text" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Cart text for Non-Loyalty clients</label>
+            <config_path>boxplosive_connect/textual/cart_non_loyalty_text</config_path>
+        </field>
+        <field id="cart_loyalty_text" translate="label" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Cart text for Loyalty clients</label>
+            <config_path>boxplosive_connect/textual/cart_loyalty_text</config_path>
+        </field>
+        <field id="checkout_non_loyalty_text" translate="label" type="textarea" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Checkout text for Non-Loyalty clients</label>
+            <config_path>boxplosive_connect/textual/checkout_non_loyalty_text</config_path>
+        </field>
+        <field id="checkout_loyalty_text" translate="label" type="textarea" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Checkout text for Loyalty clients</label>
+            <config_path>boxplosive_connect/textual/checkout_loyalty_text</config_path>
+        </field>
+    </group>
+</include>

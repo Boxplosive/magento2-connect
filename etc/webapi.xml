@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/boxplosive/transaction/get-subtotal/:quote_id" method="GET">
+        <service class="Boxplosive\Connect\Api\WebApi\Internal\RepositoryInterface" method="getSubtotal"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+	</route>
+    <route url="/V1/boxplosive/transaction/guest-cart/:quote_id/get-subtotal" method="GET">
+        <service class="Boxplosive\Connect\Api\WebApi\Internal\RepositoryInterface" method="getGuestSubtotal"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/boxplosive/subscribe/:value/quote_id/:quote_id" method="POST">
+        <service class="Boxplosive\Connect\Api\WebApi\Internal\RepositoryInterface" method="subscribe"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/boxplosive/discount/quote_id/:quote_id" method="PUT">
+        <service class="Boxplosive\Connect\Api\WebApi\Internal\RepositoryInterface" method="applyDiscount"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/boxplosive/balance/customer_id/:customer_id/" method="GET">
+        <service class="Boxplosive\Connect\Api\WebApi\Internal\RepositoryInterface" method="getBalance"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>
+

@@ -1,0 +1,219 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    //
+    //  Shopping cart page
+    //  ---------------------------------------------
+
+    .boxplosive-promotions-box {
+        display: grid;
+        gap: 12px;
+        margin: 16px -20px -28px -20px;
+        padding: 32px 20px 20px;
+        background-color: @color-white;
+        text-align: center;
+
+        .show-modal {
+            &:extend(.alink);
+
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: .3s;
+            cursor: pointer;
+
+            &:hover {
+                opacity: .9;
+            }
+        }
+
+        &[style*="none"] ~ .boxplosive-promotions-loader {
+            display: block;
+        }
+    }
+
+    .boxplosive-promotions-loader {
+        display: none;
+        margin: 16px -20px -28px -20px;
+        padding: 60px 20px;
+
+        background-color: @color-white;
+        background-image: url('@{baseDir}images/loader-1.gif');
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: 36px;
+    }
+
+    .promotions-modal {
+        .modal-inner-wrap {
+            width: 90%;
+            max-width: 425px;
+        }
+
+        .modal-content {
+            padding-bottom: 30px;
+        }
+
+        .title {
+            margin: 0 0 28px;
+            line-height: 1.4;
+        }
+
+        .promotions-list {
+            display: grid;
+            gap: 12px;
+
+            > div {
+                display: inline-flex;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            input {
+                position: relative;
+                top: 4px;
+                margin: 0;
+            }
+
+            label {
+                display: grid;
+
+                b {
+                    margin-bottom: 2px;
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+
+                span {
+                    opacity: .75;
+                }
+            }
+        }
+
+        .action.primary {
+            width: 100%;
+            padding: 14px;
+            margin-top: 32px;
+
+            border-radius: 6px;
+            font-size: 16px;
+        }
+    }
+
+    //
+    //  Checkout page
+    //  ---------------------------------------------
+
+    .checkout-rewards-points {
+        margin: 28px 0 52px;
+
+        .title {
+            &:extend(.opc-wrapper .step-title);
+        }
+
+        .earn-block {
+            margin-bottom: 4px;
+        }
+
+        .description {
+            max-width: 500px;
+            margin-bottom: 24px;
+        }
+
+        .rewards-agreement {
+            display: inline-flex;
+            gap: 12px;
+            align-items: baseline;
+            padding: 6px 10px;
+            margin-top: 24px;
+
+            border: 1px solid @color-gray89;
+            border-radius: 4px;
+
+            input {
+                top: 1px;
+                margin: 0;
+            }
+
+            label {
+                opacity: .75;
+            }
+        }
+
+        .promotions-list {
+            &:extend(.promotions-modal .promotions-list all);
+
+            max-width: 500px;
+            margin-top: 24px;
+
+            label b {
+                font-size: 14px;
+            }
+
+            .action.primary {
+                margin: 10px 0 0 24px;
+                padding: 10px 16px;
+            }
+        }
+    }
+
+
+    //
+    //  My account
+    //  ---------------------------------------------
+
+    .boxplosive-point-box {
+        .action.primary {
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: .3s;
+        }
+
+        .note {
+            margin-bottom: 20px;
+        }
+
+        .action {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .boxplosive-balance-loader {
+            padding: 20px;
+            background-image: url('@{baseDir}images/loader-1.gif');
+            background-position: 0;
+            background-repeat: no-repeat;
+            background-size: 28px;
+        }
+    }
+
+    .promotions-balance {
+        .balance {
+            display: inline-grid;
+            gap: 6px;
+            margin-bottom: 20px;
+
+            & > div {
+                display: grid;
+                grid-template-columns: 350px 85px;
+                gap: 6px;
+
+                span {
+                    padding: 4px 8px;
+                }
+
+                &:first-child span {
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+
+                &:nth-child(even) span {
+                    background-color: @color-gray94;
+                }
+            }
+        }
+    }
+}

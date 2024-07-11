@@ -1,0 +1,56 @@
+<!--
+/**
+ * Copyright © Magmodules Ltd. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+
+<!-- ko if: isEnabled -->
+    <div id="checkout-rewards-points" class="checkout-rewards-points">
+        <h2 class="title">
+            <!-- ko i18n: 'Rewards Points'--><!-- /ko -->
+        </h2>
+
+        <div class="earn-block" data-bind="html: resultText"></div>
+
+        <!-- ko if: isSubscribed() === 'subscribed' -->
+        <form class="promotions-list"
+              method="post"
+              data-bind="attr: {action: formUrl}">
+                <input type="hidden" name="form_key" data-bind="value: window.checkoutConfig.formKey"/>
+                <!-- ko foreach: promotions -->
+                    <div>
+                        <input  type="checkbox"
+                                data-bind="attr: {
+                                    id: 'checkbox-promotion-' + $index(),
+                                    name: status + $index(),
+                                    value: value,
+                                    checked: status == 'claimed' ? true : false,
+                                    disabled: status == 'claimed' ? true : false
+                                }"
+                        />
+
+                        <label data-bind="attr: { for: 'checkbox-promotion-' + $index() }">
+                            <b><!-- ko text: label--><!-- /ko --></b>
+                        </label>
+                    </div>
+                <!-- /ko -->
+                <!-- ko if: promotions().length > 0 -->
+                <div>
+                    <button class="action primary" type="submit">
+                        <!-- ko i18n: 'Apply Discount'--><!-- /ko -->
+                    </button>
+                </div>
+                <!-- /ko -->
+            </form>
+        <!-- /ko -->
+
+        <!-- ko if: isSubscribed() === 'not-subscribed' -->
+            <div class="rewards-agreement">
+                <input  type="checkbox" id="rewards-agreement" name="rewards_agreement"
+                        data-bind="checked: isCheckedComputed"/>
+                <label for="rewards-agreement" data-bind="html: optInText"></label>
+            </div>
+        <!-- /ko -->
+    </div>
+<!--/ko-->

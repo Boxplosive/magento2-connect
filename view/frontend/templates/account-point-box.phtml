@@ -1,0 +1,78 @@
+<?php
+/**
+ * Copyright © Magmodules Ltd. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+ /** @var \Boxplosive\Connect\Block\Account\Points $block */
+ /** @var \Magento\Framework\Escaper $escaper */
+?>
+
+<?php if ($block->isEnabled()): ?>
+    <section class="block boxplosive-point-box">
+        <div class="block-title">
+            <strong><?= $escaper->escapeHtml(__('Saving Program')) ?></strong>
+        </div>
+        <?php if ($block->isSubscribed()): ?>
+            <div class="promotions-balance block-content"
+                 data-element='promotions-balance' >
+                <!-- ko scope: 'boxplosive-balance' -->
+                    <div data-bind="visible:  balance().length > 0" style="display: none;" class="balance">
+                        <div>
+                            <span><?= $escaper->escapeHtml(__('Program')) ?></span>
+                            <span><?= $escaper->escapeHtml(__('Points')) ?></span>
+                        </div>
+
+                        <!-- ko foreach: balance -->
+                            <div>
+                                <span data-bind="text: name"></span>
+                                <span data-bind="text: points"></span>
+                            </div>
+                        <!-- /ko -->
+                    </div>
+
+                    <div class="action">
+                        <form data-bind="submit: unsubscribe">
+                            <button class="action primary" type="submit">
+                                <?= $escaper->escapeHtml(__('Unsubscribe from Loyalty Program')) ?>
+                            </button>
+                        </form>
+
+                        <span class="boxplosive-balance-loader" data-bind="visible: !hideLoader"></span>
+                    </div>
+                <!-- /ko -->
+            </div>
+
+            <script type="text/x-magento-init">
+                {
+                    "[data-element='promotions-balance']": {
+                        "Magento_Ui/js/core/app": {
+                            "components": {
+                                "boxplosive-balance": {
+                                    "component": "Boxplosive_Connect/js/account/balance",
+                                    "config": {
+                                        "customerId": <?= /* @noEscape */ $block->getCustomerId(); ?>,
+                                        "unsubscribeUrl": "<?= /* @noEscape */ $block->getUnsubscribeUrl(); ?>",
+                                        "optOutText": <?= /* @noEscape */ json_encode($block->getOptOutText()); ?>
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            </script>
+        <?php else: ?>
+
+        <div class="block-content">
+            <span>
+                <?= /* @noEscape */ $block->getOptInText(); ?>
+            </span>
+            <form action="<?= /* @noEscape */ $block->getSubscribeUrl() ?>" method="post">
+                <button class="action primary" type="submit">
+                    <?= $escaper->escapeHtml(__('Subscribe')) ?>
+                </button>
+            </form>
+        </div>
+        <?php endif;?>
+    </section>
+<?php endif; ?>

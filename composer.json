@@ -1,0 +1,25 @@
+{
+    "name": "boxplosive/magento2-connect",
+    "description": "Boxplosive extension for Magento 2",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "require": {
+        "magento/framework": ">=100.1.0",
+        "ext-curl": "*"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Boxplosive\\Connect\\": ""
+        }
+    }
+}

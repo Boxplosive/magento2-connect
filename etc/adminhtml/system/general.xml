@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="general" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>General</label>
+        <field id="version_button" translate="label" type="button" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Version</label>
+            <frontend_model>Boxplosive\Connect\Block\Adminhtml\System\Config\Button\VersionCheck</frontend_model>
+        </field>
+        <field id="enable" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Enabled</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>boxplosive_connect/general/enable</config_path>
+        </field>
+    </group>
+    <group id="api" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+        <label>API</label>
+        <field id="mode" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Mode</label>
+            <source_model>Boxplosive\Connect\Model\Config\Source\Mode</source_model>
+            <config_path>boxplosive_connect/api/mode</config_path>
+        </field>
+        <field id="acceptance_api_url" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>API Url</label>
+            <config_path>boxplosive_connect/api/acceptance_api_url</config_path>
+            <depends>
+                <field id="mode">acceptance</field>
+            </depends>
+        </field>
+        <field id="production_api_url" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>API Url</label>
+            <config_path>boxplosive_connect/api/production_api_url</config_path>
+            <depends>
+                <field id="mode">production</field>
+            </depends>
+        </field>
+        <field id="acceptance_b2c_tenant_name" translate="label" type="text" sortOrder="16" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>B2C Tenant Name</label>
+            <config_path>boxplosive_connect/api/acceptance_b2c_tenant_name</config_path>
+            <depends>
+                <field id="mode">acceptance</field>
+            </depends>
+        </field>
+        <field id="production_b2c_tenant_name" translate="label" type="text" sortOrder="16" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>B2C Tenant Name</label>
+            <config_path>boxplosive_connect/api/production_b2c_tenant_name</config_path>
+            <depends>
+                <field id="mode">production</field>
+            </depends>
+        </field>
+        <field id="acceptance_b2c_tenant_id" translate="label" type="text" sortOrder="17" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>B2C Tenant Id</label>
+            <config_path>boxplosive_connect/api/acceptance_b2c_tenant_id</config_path>
+            <depends>
+                <field id="mode">acceptance</field>
+            </depends>
+        </field>
+        <field id="production_b2c_tenant_id" translate="label" type="text" sortOrder="17" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>B2C Tenant Id</label>
+            <config_path>boxplosive_connect/api/production_b2c_tenant_id</config_path>
+            <depends>
+                <field id="mode">production</field>
+            </depends>
+        </field>
+        <field id="tenant_id" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Tenant ID</label>
+            <config_path>boxplosive_connect/api/tenant_id</config_path>
+        </field>
+        <field id="acceptance_client_id" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Client ID</label>
+            <config_path>boxplosive_connect/api/acceptance_client_id</config_path>
+            <depends>
+                <field id="mode">acceptance</field>
+            </depends>
+        </field>
+        <field id="production_client_id" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Client ID</label>
+            <config_path>boxplosive_connect/api/production_client_id</config_path>
+            <depends>
+                <field id="mode">production</field>
+            </depends>
+        </field>
+        <field id="acceptance_client_secret" translate="label" type="obscure" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Client Secret</label>
+            <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+            <comment model="Boxplosive\Connect\Model\Adminhtml\Comment\EncryptedHint" />
+            <config_path>boxplosive_connect/api/acceptance_client_secret</config_path>
+            <depends>
+                <field id="mode">acceptance</field>
+            </depends>
+        </field>
+        <field id="production_client_secret" translate="label" type="obscure" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Client Secret</label>
+            <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+            <comment model="Boxplosive\Connect\Model\Adminhtml\Comment\EncryptedHint" />
+            <config_path>boxplosive_connect/api/production_client_secret</config_path>
+            <depends>
+                <field id="mode">production</field>
+            </depends>
+        </field>
+        <field id="subscription_key" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Subscription Key</label>
+            <config_path>boxplosive_connect/api/subscription_key</config_path>
+        </field>
+        <field id="button" translate="label" type="button" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label/>
+            <frontend_model>Boxplosive\Connect\Block\Adminhtml\System\Config\Button\Credentials</frontend_model>
+        </field>
+    </group>
+</include>

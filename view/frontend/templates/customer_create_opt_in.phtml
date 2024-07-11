@@ -1,0 +1,21 @@
+<?php
+/**
+ * Copyright © Magmodules Ltd. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+ /** @var \Boxplosive\Connect\Block\Account\Points $block */
+ /** @var \Magento\Framework\Escaper $escaper */
+?>
+
+<div class="field choice boxplosive-opt-in">
+    <input type="checkbox"
+            name="boxplosive-opt-in"
+            id="boxplosive-opt-in"
+            title="<?= /* @noEscape */__('Boxplosive') ?>"
+            class="input-text"
+            value="1" />
+    <label for="boxplosive-opt-in" class="label">
+        <span><?= /* @noEscape */ $block->getOptInText(); ?></span>
+    </label>
+</div>
